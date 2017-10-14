@@ -1,0 +1,7 @@
+            <div class="list-group">
+                <a href="{% url 'statistics_view' %}" class="list-group-item list-group-item-action {% if url_name == 'statistics_view' %}active{% endif %}">Статистика</a>
+                <a href="{% url 'settings_view' %}" class="list-group-item list-group-item-action {% if url_name == 'settings_view' %}active{% endif %}">Настройки профиля</a>
+                <a href="#" class="list-group-item list-group-item-action {% if url_name == 'settiings_view' %}active{% endif %} disabled">Сменить пароль</a>
+                <a href="{% url 'notifications_view' %}" class="list-group-item list-group-item-action {% if url_name == 'notifications_view' %}active{% endif %}">Уведомления</a>
+                <a href="{% url 'logout_view' %}" class="list-group-item list-group-item-action">Выход</a>
+            </div>

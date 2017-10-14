@@ -1,0 +1,86 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #ecefee;
+}
+/*-------------------
+ цвет верхней менюшки
+-------------------*/
+.navbar {
+    background-color: #871c8c;
+    /*padding-top: 0;*/
+    /*padding-bottom: 0;*/
+}
+.nav-item:hover {
+    background-color: #a61eab;
+}
+.active > a {
+    color: #fffdf1 !important;
+}
+/*-------------------------------
+ дизайн выпадающего меню аккаунта
+-------------------------------*/
+li.show {
+    background-color: #a61eab;
+}
+.dropdown-menu {
+    -webkit-box-shadow: 0 2px 15px 0 rgba(176,176,176,1);
+    -moz-box-shadow: 0 2px 15px 0 rgba(176,176,176,1);
+    box-shadow: 0 2px 15px 0 rgba(176,176,176,1);
+    /*margin-top: 9px;*/
+    min-width: 250px;
+    border-radius: 0;
+    border-color: #871c8c;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.dropdown-divider {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.dropdown-item {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.level {
+    text-align: left;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.user-level {
+    color: #ce597e;
+    font-size: 32px !important;
+}
+.user-exp {
+    color: #8c3c56;
+    font-size: 16px !important;
+}
+/*-------------------------------------
+ все кнопки теперь имеют указатель руки
+-------------------------------------*/
+label, button {
+    cursor: pointer;
+}
+/*------------
+ дизайн футера
+------------*/
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /*background-color: #f5f5f5;*/
+    /*background-color: #3e3e3e;*/
+    border-top: 1px solid #871c8c;
+    /*color: #aaaaaa;*/
+    text-align: center;
+}

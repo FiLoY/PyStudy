@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static "account/css/account.css" %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3">
+            {% include 'account/submenu.html' %}
+        </div>
+        <div class="col-12 col-lg-9">
+            <div class="card">
+                <div class="card-block">
+                    {% for level in levels %}
+                        {% if user.experience >= level.experience_start_range and user.experience <= level.experience_end_range %}
+                            <p class="card-text">Уровень: {{ level.level }}</p>
+                            <p class="card-text">Полученный опыт: {{ user.experience }}/{{ level.experience_end_range }}</p>
+                            <p class="card-text">Пройдено тестов: 1</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "account/js/account.js" %}"></script>
+{% endblock %}

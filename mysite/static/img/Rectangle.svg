@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="101%" id="radialGradient-1">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#53A0FE" offset="36.6986727%"></stop>
+            <stop stop-color="#B4ED50" offset="100%"></stop>
+        </radialGradient>
+        <rect id="path-2" x="0" y="0" width="240" height="240" rx="8"></rect>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="240" height="240" fill="white">
+            <use xlink:href="#path-2"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <use id="Rectangle" stroke="url(#radialGradient-1)" mask="url(#mask-3)" stroke-width="20" xlink:href="#path-2"></use>
+        <text id="10" font-family="Arial-BoldMT, Arial" font-size="144" font-weight="bold" fill="#EA1313">
+            <tspan x="40.4140625" y="172">10</tspan>
+        </text>
+    </g>
+</svg>

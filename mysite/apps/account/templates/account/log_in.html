@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'account/css/account.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card">
+                <div class="card-header text-center lead">Аутентификация</div>
+                <form action="." method="post" class="card-block">
+                    {% for field in form %}
+                        <div class="form-group {% if field.errors %}has-danger{% endif %}">
+                            {{ field.label_tag }}
+                            {{ field }}
+                                {% for err in field.errors %}
+                                    <small class="form-control-feedback">
+                                        {{ err }}
+                                    </small>
+                                {% endfor %}
+                        </div>
+                    {% endfor %}
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="button" class="btn btn-sm btn-link">Забыли пароль?</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <div class="">
+                    <a href="{% url 'signup_view' %}" data-toggle="tooltip" data-placement="bottom" title="Перейти к регистрации" class="btn btn-link btn-block">
+                        Ещё нет аккаунта?
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-link btn-block">
+                        <img src="{% static 'img/VK.svg' %}" width="20" height="20" style="margin-right: 10px" class="d-inline-block align-top" alt="">Войти через Vk
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'account/js/account.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+            <div class="list-group">
+                {% for chapter in chapters %}
+                    <a href="{% url 'book_view' chapter.id %}" class="list-group-item list-group-item-action {% if correct_chapter_id == chapter.id %}active{% endif %}">
+                        <div class="col-10 text-left">
+                            {{ chapter.name }}
+                        </div>
+                        <div class="col-2 text-right">
+                            {% if user in chapter.users.all %}
+                                <span class="badge badge-default badge-pill" title="Глава прочитана"><span class="fa fa-check" aria-hidden="true"></span></span>
+                            {% endif %}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>

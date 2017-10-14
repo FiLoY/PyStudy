@@ -1,0 +1,118 @@
+{% load staticfiles %}<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>{{ title|default:"PyStudy - Онлайн обучение и тестирование по языку программирования Python" }}</title>
+        {#    META    #}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {#    END META    #}
+        {#    CSS    #}
+        <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+        <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
+        <link href="{% static "css/base.css" %}" rel="stylesheet">
+        {% block styles %}{% endblock %}
+        {#    END CSS    #}
+    </head>
+    <body>
+        {#    NAVIGATION    #}
+        <nav class="navbar navbar-toggleable-sm navbar-inverse">
+            {# button for mobile menu #}
+            <button class="navbar-toggler navbar-toggler-right"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {# end button for mobile menu #}
+            {# brand #}
+            <a class="navbar-brand" href="/">
+                <img src="{% static "img/logo.png" %}" width="30" height="30" class="d-inline-block align-top" alt=""> PyStudy
+            </a>
+            {# end brand #}
+            {# menu #}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'book_view' %}">Учебник</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'test_sandbox_view' %}">Песочница тестов<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user_rating_view' %}">Рейтинг пользователей</a>
+                    </li>
+                </ul>
+                {# login #}
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link"
+                               href=""
+                               id="navbarDropdownMenuLink"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                {% if user.first_name %}
+                                    {{ user.get_full_name }}
+                                {% else %}
+                                    {{ user.email }}
+                                {% endif %}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{% url 'statistics_view' %}">
+                                    <div class="row">
+                                        <div class="col">
+                                            {% for level in levels %}
+                                                {% if user.experience >= level.experience_start_range and user.experience <= level.experience_end_range %}
+                                                    <div class="row justify-content-center user-level">{{ level.level }} уровень</div>
+                                                    <div class="row justify-content-center user-exp">
+                                                        {{ user.experience }}/{{ level.experience_end_range }}
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'settings_view' %}">
+                                    Профиль
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout_view' %}">
+                                    Выйти
+                                </a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'login_view' %}"  aria-expanded="false">
+                            Приступить к обучению
+                        </a>
+                    {% endif %}
+                </ul>
+                {# end login #}
+            </div>
+            {# end menu #}
+        </nav>
+        {#    END NAVIGATION    #}
+        {#    CONTENT    #}
+        {% block content %}{% endblock content %}
+        {#    END CONTENT    #}
+        {#    FOOTER    #}
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">PyStudy © {% now "Y" %}</span>
+            </div>
+        </footer>
+        {#    END FOOTER    #}
+        {#    SCRIPTS    #}
+        <script src="{% static "js/jquery-3.2.0.min.js" %}"></script>
+        <script src="{% static "js/tether.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/base.js" %}"></script>
+        {% block scripts %}{% endblock %}
+        {#    END SCRIPTS    #}
+    </body>
+</html>

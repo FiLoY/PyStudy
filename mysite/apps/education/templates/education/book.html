@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'education/css/education.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
+            {% include 'education/book_submenu.html' %}
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
+            <div class="card">
+                {% csrf_token %}
+                {% if correct_chapter.get_previous_chapter_id_or_none %}
+                    <a href="{% url 'book_view' correct_chapter.get_previous_chapter_id_or_none %}" class="card-header" data-toggle="tooltip" data-placement="bottom" title="Предыдущая глава">
+                        <div class="row justify-content-center">
+                            <span class="fa fa-chevron-up"></span>
+                        </div>
+                    </a>
+                {% endif %}
+                <div class="card-block">
+                    {{ correct_chapter.text|safe }}
+                </div>
+                {% if correct_chapter.get_chapter_test_or_none  %}
+                    <a href="{% url 'testing_view' correct_chapter.get_chapter_test_or_none.id %}" class="card-footer" style="border: 1px dashed #ce597e !important;">
+                        <div class="row justify-content-between">
+                            <div class="col text-center">Тест по главе</div><div class="col-1 text-right"><span class="fa fa-chevron-right"></span></div>
+                        </div>
+                    </a>
+                {% endif %}
+                {% if correct_chapter.get_next_chapter_id_or_none %}
+                    <a href="{% url 'book_view' correct_chapter.get_next_chapter_id_or_none %}" class="card-footer" style="margin-top: 5px;" data-toggle="tooltip" data-placement="top" title="Следующая глава">
+                        <div class="row justify-content-center">
+                            <span class="fa fa-chevron-down"></span>
+                        </div>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

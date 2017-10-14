@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'education/css/education.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="card card-outline-info mb-3 text-center">
+        <div class="card-block ">
+            <blockquote class="card-blockquote">
+                <p>Здесь предоставлеты тесты для закрепления своего результата.</p>
+                <p>За каждое прохождение теста Вы получите определенное количество едениц опыта.</p>
+            </blockquote>
+        </div>
+    </div>
+    {#  ВЫБОР УРОВНЯ СЛОЖНОСТИ  #}
+        <div class="card-header mb-1">
+            Все тесты:
+        </div>
+
+            {% for test in tests %}
+                    <a href="{% url 'testing_view' test.id %}" class="card mb-2 disabled">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col">{{ test.name }}</div>
+                                <div class="col">{{ test.description|safe }}</div>
+                            </div>
+                        </div>
+                    </a>
+            {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static "account/css/account.css" %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3">
+        {% include 'account/submenu.html' %}
+        </div>
+        <div class="col-12 col-lg-9">
+            <div class="card">
+                <div class="card-block">
+                    Уведомления
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "account/js/account.js" %}"></script>
+{% endblock %}

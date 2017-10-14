@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static "account/css/account.css" %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3">
+            {% include 'account/submenu.html' %}
+        </div>
+        <div class="col-12 col-lg-9">
+            <div class="card">
+                <form action="." method="post" enctype="multipart/form-data" class="card-block m-x-auto form-width" id="formUpload">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-lg-3 text-center">
+                            <label class="rounded upload-avatar" for="id_avatar" data-toggle="tooltip" data-placement="bottom" title="Загрузить изображение">
+                                <img src="{{ user.avatar.url }}" width="130px" height="130px" id="avatar" class="rounded">
+                            </label>
+                        </div>
+                        <div class="col-12 col-lg-9">
+                            {% for field in form.visible_fields %}
+                                <div class="form-group {% if field.errors %}has-danger{% endif %}">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    <small class="help-text">
+                                        {{ field.help_text }}
+                                    </small>
+                                    {% for err in field.errors %}
+                                        <small class="form-control-feedback">
+                                            {{ err }}
+                                        </small>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            {% csrf_token %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "account/js/account.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="279px" height="266px" viewBox="0 0 279 266" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Star</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="48.1478084%" cy="53.735625%" fx="48.1478084%" fy="53.735625%" r="100%" id="radialGradient-1">
+            <stop stop-color="#ECB511" offset="0%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </radialGradient>
+        <text id="text-2" font-family="Arial-BoldMT, Arial" font-size="120" font-weight="bold">
+            <tspan x="73.2617188" y="191">10</tspan>
+        </text>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-5">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Star" stroke="#060606" stroke-width="2" fill="url(#radialGradient-1)" points="139.952138 219 55.311062 263.498447 71.4760692 169.249224 3 102.501553 97.6316002 88.7507764 139.952138 3 182.272677 88.7507764 276.904277 102.501553 208.428208 169.249224 224.593215 263.498447"></polygon>
+        <g id="10">
+            <use stroke="#0B0A0A" fill="#D8D8D8" fill-opacity="1" stroke-width="0.5" stroke-opacity="1" filter="url(#filter-3)" xlink:href="#text-2"></use>
+            <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#text-2"></use>
+            <use stroke="#0B0A0A" fill="#D8D8D8" fill-opacity="1" stroke-width="0.5" stroke-opacity="1" filter="url(#filter-4)" xlink:href="#text-2"></use>
+            <use stroke="#0B0A0A" fill="#D8D8D8" fill-opacity="1" stroke-width="0.5" stroke-opacity="1" filter="url(#filter-5)" xlink:href="#text-2"></use>
+            <use stroke="#0B0A0A" stroke-width="0.5" xlink:href="#text-2"></use>
+        </g>
+    </g>
+</svg>

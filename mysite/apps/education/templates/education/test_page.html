@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'education/css/education.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div id="test-process">
+        <div class="card" id="welcome-test-form">
+            <div class="card-header">
+                {{ test.name }}
+            </div>
+            <div class="card-block">
+                <div class="row mb-3">
+                    <div class="col">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item justify-content-between"><span>Время на выполнение теста: </span><span>{{ test.time|date:"i:s" }}</span></li>
+                            <li class="list-group-item justify-content-between"><span>Максимально можно получить опыта: </span><span>{{ test.max_experience }}</span></li>
+                            <li class="list-group-item justify-content-between"><span>Количество вопросов: </span><span>{{ test.max_questions }}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item justify-content-between"><span>Количество попыток: </span><span>{{ user_tests_count|default:'-' }}</span></li>
+                            <li class="list-group-item justify-content-between"><span>Ваш прошлый результат: </span><span>{% if last_test %} Время: {{ last_test.test_time_done }} Ответов: {{ last_test.true_answers }}/{{ test.max_questions }} {% else %} - {% endif %}</span></li>
+                            <li class="list-group-item justify-content-between"><span>Ваш лучший результат: </span><span>{% if last_test %} Время: {{ last_test.test_time_done }} Ответов: {{ last_test.true_answers }}/{{ test.max_questions }} {% else %} - {% endif %}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="row mb-3">
+                    <div class="col">
+                        {{ test.description|safe }}
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row text-right">
+                    <div class="col-9 text-left text-muted">
+                        Перед началом теста, убедитесь, что у Вас стабильное Интернет подключение. Запрещено переходить на другие вкладки браузера.
+                        Если вкладка с тестом будет закрыта - тест будет считаться завершенным.
+                        В ходе теста у Вас должен быть запущен интерпритатор Python 3.6.
+                    </div>
+                    <div class="col">
+                        <input type="hidden" value="{{ test.id }}" name="test-id">
+                        <button id="start-button" type="submit" name="start-button" class="btn btn-primary" onclick="callAjax('{% url 'test_process_view' %}');">Начать!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+        <script src="{% static "education/js/education.js" %}"></script>
+<script>
+
+</script>
+{% endblock %}

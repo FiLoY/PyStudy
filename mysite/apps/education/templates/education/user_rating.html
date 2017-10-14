@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'education/css/education.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    {#  ВЫБОР УРОВНЯ СЛОЖНОСТИ  #}
+        <div class="card-header mb-1">
+            Топ-15 пользователей по количеству опыта:
+        </div>
+
+            {% for user in users %}
+                    <a href="#" class="card mb-2 disabled">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col">{{ user.username }}</div>
+                                <div class="col text-right">{{ user.experience|safe }}</div>
+                            </div>
+                        </div>
+                    </a>
+            {% endfor %}
+</div>
+{% endblock %}

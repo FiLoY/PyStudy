@@ -1,0 +1,23 @@
+ {#  ФОРМА ВОПРОСА С ОТВЕТОМ  #}
+    <div class="card" id="question-form">
+        <div class="card-header">
+            {{ question.text|safe }}{{ rer }}
+            <input type="hidden" name="question_id" value="{{ question_id }}">
+        </div>
+        <div class="card-block">
+          <fieldset class="form-group">
+            {% for answer in answers %}
+                <div class="form-check">
+                   <label class="list-group-item form-check-label hover-effect-input">
+                        <input class="form-check-input" style="margin-left: 3px" type="radio" name="answer_id" value="{{ answer.id }}">
+                        {{ answer.text|safe }}
+                   </label>
+                </div>
+            {% endfor %}
+          </fieldset>
+        </div>
+        <input type="hidden" value="{{ user_test_id }}" name="user-test-id">
+        <button name="answer" class="card-footer btn hover-effect-button" style="color: #0275d8;" data-toggle="tooltip" data-placement="top" data-animation="false" title="Ответить" onclick="callAjax('{% url 'test_process_view' %}');">
+                <span class="fa fa-chevron-down"></span>
+        </button>
+    </div>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'account/css/account.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container margin-content">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card">
+                <div class="card-header text-center lead">Регистрация</div>
+                <form action="." method="post">
+                    <div class="card-block">
+                        {% for field in form %}
+                            <div class="form-group {% if field.errors %}has-danger{% endif %}">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <small class="help-text">
+                                    {{ field.help_text }}
+                                </small>
+                                {% for err in field.errors %}
+                                    <small class="form-control-feedback">
+                                        {{ err }}
+                                    </small>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {% csrf_token %}
+                    </div>
+                    <div class="card-block">
+                        <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'account/js/account.js' %}"></script>
+{% endblock %}
